@@ -5,6 +5,14 @@ function App() {
     <div className="min-h-screen bg-[#0e1f3e]">
       <div className="container mx-auto px-6 py-12">
         <div className="max-w-6xl mx-auto">
+          {/* Header image: kids playing chess */}
+          <div className="mb-10 overflow-hidden rounded-2xl shadow-2xl h-96 md:h-[36rem]">
+            <img
+              src="/kids-chess.jpg"
+              alt="Kids playing chess"
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="text-center mb-16">
             <div className="flex justify-center mb-6">
               <div className="bg-[#ca3433] rounded-full p-6 shadow-2xl">
