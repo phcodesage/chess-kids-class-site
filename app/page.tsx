@@ -215,6 +215,7 @@ export default function Home() {
                     <span className="text-2xl sm:text-3xl font-bold text-gray-900">$60</span>
                     <span className="text-gray-500 text-sm sm:text-base">/ class</span>
                   </div>
+                  <p className="text-xs sm:text-sm text-gray-400 mt-1">75 min class</p>
                 </div>
                 <div className="bg-gray-50 rounded-xl p-4 sm:p-5">
                   <div className="flex items-baseline gap-1">
@@ -262,6 +263,7 @@ export default function Home() {
                     <span className="text-2xl sm:text-3xl font-bold text-gray-900">$60</span>
                     <span className="text-gray-500 text-sm sm:text-base">/ lesson</span>
                   </div>
+                  <p className="text-xs sm:text-sm text-gray-400 mt-1">60 min session</p>
                 </div>
               </div>
 
