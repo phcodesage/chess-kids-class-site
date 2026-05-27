@@ -277,13 +277,34 @@ export default function Home() {
 
               <p className="text-gray-500 mb-6 sm:mb-8 text-sm sm:text-base">60 minutes per session</p>
 
-              <div className="flex-1">
+              <div className="flex-1 flex flex-col justify-between">
                 <div className="bg-gray-50 rounded-xl p-4 sm:p-5">
                   <div className="flex items-baseline gap-1">
                     <span className="text-2xl sm:text-3xl font-bold text-gray-900">$60</span>
                     <span className="text-gray-500 text-sm sm:text-base">/ lesson</span>
                   </div>
                   <p className="text-xs sm:text-sm text-gray-400 mt-1">60 min session</p>
+                </div>
+                
+                <div className="mt-4 flex-1 flex flex-col justify-center">
+                  <ul className="space-y-2 text-sm text-gray-600 py-2">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#ca3433] font-bold">✓</span>
+                      <span>1-on-1 personalized instruction</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#ca3433] font-bold">✓</span>
+                      <span>Tailored lesson plan and custom pace</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#ca3433] font-bold">✓</span>
+                      <span>Deep game analysis & tactical feedback</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#ca3433] font-bold">✓</span>
+                      <span>Flexible scheduling options</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
