@@ -15,12 +15,24 @@ import {
   X,
   ChevronUp,
 } from 'lucide-react';
+import PaymentModal, { calcCardPrice } from './components/PaymentModal';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [hidePhone, setHidePhone] = useState(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState({
+    name: "",
+    cashPrice: "",
+    cardLink: "",
+  });
   const footerRef = useRef<HTMLDivElement>(null);
+
+  const handleOpenPayment = (name: string, cashPrice: string, cardLink: string) => {
+    setSelectedCourse({ name, cashPrice, cardLink });
+    setPaymentModalOpen(true);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,6 +77,12 @@ export default function Home() {
               <a href="#about" className="text-gray-800 hover:text-[#ca3433] transition-colors font-bold uppercase text-sm tracking-wider">About</a>
               <a href="#pricing" className="text-gray-800 hover:text-[#ca3433] transition-colors font-bold uppercase text-sm tracking-wider">Pricing</a>
               <a href="#footer" className="text-gray-800 hover:text-[#ca3433] transition-colors font-bold uppercase text-sm tracking-wider">Contact</a>
+              <a href="/admin" className="text-gray-800 hover:text-[#ca3433] transition-colors font-bold uppercase text-sm tracking-wider flex items-center gap-1.5">
+                <svg className="w-4 h-4 text-[#ca3433]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                Admin
+              </a>
             </div>
 
             {/* Right Section: Call */}
@@ -97,6 +115,12 @@ export default function Home() {
                 <a href="#about" className="text-gray-800 hover:text-[#ca3433] transition-colors font-bold uppercase text-sm py-2" onClick={() => setIsMenuOpen(false)}>About</a>
                 <a href="#pricing" className="text-gray-800 hover:text-[#ca3433] transition-colors font-bold uppercase text-sm py-2" onClick={() => setIsMenuOpen(false)}>Pricing</a>
                 <a href="#footer" className="text-gray-800 hover:text-[#ca3433] transition-colors font-bold uppercase text-sm py-2" onClick={() => setIsMenuOpen(false)}>Contact</a>
+                 <a href="/admin" className="text-gray-800 hover:text-[#ca3433] transition-colors font-bold uppercase text-sm py-2 flex items-center gap-1.5" onClick={() => setIsMenuOpen(false)}>
+                  <svg className="w-4 h-4 text-[#ca3433]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  Admin
+                </a>
                 <a href="tel:+15162263114" className="text-[#ca3433] font-bold text-sm py-2 flex items-center gap-2">
                   <Phone className="w-4 h-4" /> +1 (516) 226-3114
                 </a>
@@ -227,22 +251,18 @@ export default function Home() {
               </div>
 
               <div className="mt-6 sm:mt-8 space-y-3">
-                <a
-                  href="https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=48e36e8c-5610-11f1-a8e1-12a0879a85b1"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => handleOpenPayment("Group Classes - Single Class", "$60", "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=48e36e8c-5610-11f1-a8e1-12a0879a85b1")}
                   className="block w-full bg-[#ca3433] hover:bg-[#b02d2c] text-white font-semibold text-sm sm:text-base px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl text-center transition-colors duration-200"
                 >
                   Pay $60 — Single Class
-                </a>
-                <a
-                  href="https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=7069e1d0-5610-11f1-a8e1-12a0879a85b1"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                </button>
+                <button
+                  onClick={() => handleOpenPayment("Group Classes - Monthly", "$220", "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=7069e1d0-5610-11f1-a8e1-12a0879a85b1")}
                   className="block w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold text-sm sm:text-base px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl text-center transition-colors duration-200"
                 >
                   Pay $220 — Monthly
-                </a>
+                </button>
               </div>
             </div>
 
@@ -268,14 +288,12 @@ export default function Home() {
               </div>
 
               <div className="mt-6 sm:mt-8">
-                <a
-                  href="https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=a37083c0-5610-11f1-a8e1-12a0879a85b1"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => handleOpenPayment("Private Lessons - Private Lesson", "$60", "https://securelink-prod.valorpaytech.com:4430/?redirect=1&uid=a37083c0-5610-11f1-a8e1-12a0879a85b1")}
                   className="block w-full bg-[#ca3433] hover:bg-[#b02d2c] text-white font-semibold text-sm sm:text-base px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl text-center transition-colors duration-200"
                 >
                   Pay $60 — Private Lesson
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -366,6 +384,15 @@ export default function Home() {
       >
         <ChevronUp className="w-5 h-5" />
       </button>
+
+      <PaymentModal
+        isOpen={paymentModalOpen}
+        onClose={() => setPaymentModalOpen(false)}
+        courseName={selectedCourse.name}
+        cashPrice={selectedCourse.cashPrice}
+        cardPrice={calcCardPrice(selectedCourse.cashPrice)}
+        cardLink={selectedCourse.cardLink}
+      />
     </div>
   );
 }
